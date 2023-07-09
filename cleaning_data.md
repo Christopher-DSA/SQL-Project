@@ -30,6 +30,9 @@ The value of user_id is null for every row and it is also not used in any other 
 
 Was this column implemented for future proofing?
 
+## 5. Changing Unix Time stamps to human readable times.
+In the 'visit_start_time' from the analytics table the times are saved as unix time stamps. We will convert these to human readable timestamps.
+
 # Queries:
 Below, provide the SQL queries you used to clean your data.
 
@@ -76,10 +79,16 @@ Solution:
 SELECT DISTINCT * FROM analytics
 ```
 
-## 2. Value for user_id is NULL in every row
+## 4. Value for user_id is NULL in every row
 ``` sql
 3. SELECT * FROM analytics WHERE userid IS NOT NULL
 ```
 Result: Returned 0 rows.
 ### Solution
 Delete the user_id column? Populate it? For now, no action as been taken.
+
+## 5. Changing Unix timestamps to human readable timestamps
+``` sql
+SELECT to_timestamp(visit_start_time::int)::text AS "vist_start_time" FROM analytics
+``` 
+
