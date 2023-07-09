@@ -1,9 +1,16 @@
 What issues will you address by cleaning the data?
-Issue 1: The unit cost in the data needs to be divided by 1,000,000.
+## The unit cost in the data needs to be divided by 1,000,000.
+By examining the unit cost of the products in this dataset, they are very unsually high for the types of products being sold. 
 
-Issue 2: The column 'userid' in the analytics table is null for every row and it is also not used in any other table as a primary key or a foreign key. 'fullvisitorID' is unique to every visitor so we don't really need this column at all.
+To investigate further I checked the 'total_transaction_revenue' column in the 'all_sessions' table. An example of what I found. Nest® Cam Outdoor Security Camera - USA Where the 'product_price' was 119000000. This seems a little bit high for a security camera so I googled the actual price: 179.72 United States Dollar. This is when I realized that there were extra zeros in the entry. 
 
-Issue 3: 'units_sold', 'timeonsite' and 'revenue' are all completely null as well, I have confirmed this by using a query to filter at all rows that have null values in each of these columns. They all returned 0 rows meaning that every row does in fact have null as the value.
+Dividing by 1,000,000 would make it $119 USD which makes alot more sense for this kind of product. We will be diving all values with these extra 0's to remove the extra six extra 0's added in error.
+
+## Issue 2: The column 'userid' in the analytics table is redundant?
+The value of user_id is null for every row and it is also not used in any other table as a primary key or a foreign key. 'fullvisitorID' is unique to every visitor so we don't really need this column at all. We can use 'fullvisitorID' to represent each visitor instead of userID since it is unique to each vist. Was this column implemented for future proofing?
+
+## Issue 3: 'timeonsite' and 'revenue' are all completely null (all_sessions table)
+I have confirmed this by using a query to filter at all rows that have null values in each of these columns. They all returned 0 rows meaning that every row does in fact have null as the value.
 
 ## Missing Values in units_sold column
 For the units_sold column in the analytics table there are columns where units_sold is NULL. It is unclear whether this is meant to represent 0 or that the data is missing. By checking other columns in the same 'analytics' table, for example 'unit_price' there are infact rows with the value of 0 to represent zero sales instead of NULL. Also by checking whether or not there any rows in the 'units_sold' table have a value zero, we can see that none exist. Therefore moving forward we are going to go with the assumption that these NULL values do infact represent 0 'units_sold'.
@@ -12,14 +19,22 @@ For the units_sold column in the analytics table there are columns where units_s
 # Queries:
 Below, provide the SQL queries you used to clean your data.
 
-## 1. How the issue was discovered
+## 1. How the six extra 0's were discovered
+``` sql
+1. SELECT unit_price FROM analytics
+```
+Observation: These prices seem too high for the types of products being sold.
 ``` sql
 1. SELECT (unit_price / 1000000) FROM analytics
 ```
-## 3. How the issue was discovered
+Purpose: Now with the extra 0's removed the prices are accurately represented.
+
+## 2. Missing user_id in all columns
 ``` sql
 3. SELECT * FROM analytics WHERE userid IS NOT NULL
 ```
+Result: Returned 0 rows.
+
 
 ## 4. How the issue was discovered: (Missing Values in units_sold column)
 ``` sql
