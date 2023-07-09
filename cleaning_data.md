@@ -2,7 +2,7 @@ What issues will you address by cleaning the data?
 
 # 1. Cleaning the 'analytics' table
 
-## The 'unit_cost' in the data needs to be divided by 1,000,000.
+## 1. The 'unit_cost' in the data needs to be divided by 1,000,000.
 By examining the unit cost of the products in this dataset, they are very unsually high for the types of products being sold. 
 
 To investigate further I checked the 'total_transaction_revenue' column in the 'all_sessions' table. An example of what I found. Nest® Cam Outdoor Security Camera - USA Where the 'product_price' was 119000000. This seems a little bit high for a security camera so I googled the actual price: 179.72 United States Dollar. This is when I realized that there were extra zeros in the entry. 
