@@ -43,6 +43,9 @@ Below, provide the SQL queries you used to clean your data.
 Observation: These prices seem too high for the types of products being sold.
 ``` sql
 1. SELECT (unit_price / 1000000) FROM analytics
+
+--We can also use the below query to remove unnecessary extra 0's from the end of the price
+--ROUND(unit_price/1000000,2) AS unitprice
 ```
 Purpose: Now with the extra 0's removed the prices are accurately represented.
 
@@ -90,5 +93,26 @@ Delete the user_id column? Populate it? For now, no action as been taken.
 ## 5. Changing Unix timestamps to human readable timestamps
 ``` sql
 SELECT to_timestamp(visit_start_time::int)::text AS "vist_start_time" FROM analytics
-``` 
+```
+
+# 6. Combine all the above conditions in order to get a clean table ready for analysis
+``` sql
+SELECT 
+		visitnumber,
+		visit_id,
+		visit_start_time, 
+		to_timestamp(visit_start_time::int)::timestamptz AS "vist_start_time2",
+		"date",
+		full_visitor_id,
+		userid,
+		channel_grouping,
+		social_engagement_type,
+		units_sold,
+		pageviews,
+		timeonsite,
+		bounces,
+		revenue,
+		unit_price / 1000000 AS unitprice
+FROM analytics
+```
 
