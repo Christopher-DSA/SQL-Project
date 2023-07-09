@@ -36,20 +36,20 @@ In the 'visit_start_time' from the analytics table the times are saved as unix t
 # Queries:
 Below, provide the SQL queries you used to clean your data.
 
-## 1. How the six extra 0's were discovered
+## 1. Fixing the unit_price six extra 0's:
 ``` sql
-1. SELECT unit_price FROM analytics
+SELECT unit_price FROM analytics
 ```
 Observation: These prices seem too high for the types of products being sold.
 ``` sql
-1. SELECT (unit_price / 1000000) FROM analytics
+SELECT (unit_price / 1000000) AS unitprice FROM analytics 
 
---We can also use the below query to remove unnecessary extra 0's from the end of the price
---ROUND(unit_price/1000000,2) AS unitprice
+-- OR can also use the below query to remove unnecessary extra 0's from the end of the price
+SELECT ROUND(unit_price/1000000,2) AS unitprice FROM analytics
 ```
 Purpose: Now with the extra 0's removed the prices are accurately represented.
 
-## 2. How the issue was discovered: (Missing Values in units_sold column)
+## 2. How the issue was discovered: (Missing Values in units_sold column):
 ``` sql
 SELECT * FROM analytics WHERE units_sold IS NULL
 ```
@@ -65,7 +65,7 @@ Returned: 0 Rows where units_sold = 0
 SELECT CASE WHEN units_sold IS NULL THEN 0 ELSE unit_price END FROM analytics 
 ```
 
-## 3. Duplicate Rows in the analytics table
+## 3. Duplicate Rows in the analytics table:
 ``` sql
 SELECT * FROM analytics
 Returns: 4301122 rows
@@ -82,7 +82,7 @@ Solution:
 SELECT DISTINCT * FROM analytics
 ```
 
-## 4. Value for user_id is NULL in every row
+## 4. Value for user_id is NULL in every row:
 ``` sql
 3. SELECT * FROM analytics WHERE userid IS NOT NULL
 ```
@@ -90,14 +90,14 @@ Result: Returned 0 rows.
 ### Solution
 Delete the user_id column? Populate it? For now, no action as been taken.
 
-## 5. Changing Unix timestamps to human readable timestamps
+## 5. Changing Unix timestamps to human readable timestamps:
 ``` sql
 SELECT to_timestamp(visit_start_time::int)::text AS "vist_start_time" FROM analytics
 ```
 
-# 6. Combine all the above conditions in order to get a clean table ready for analysis
+# 6. Combine all the above conditions in order to get a clean table ready for analysis:
 ``` sql
-SELECT 
+SELECT DISTINCT
 		visitnumber,
 		visit_id,
 		visit_start_time, 
@@ -107,12 +107,12 @@ SELECT
 		userid,
 		channel_grouping,
 		social_engagement_type,
-		units_sold,
+		CASE WHEN units_sold IS NULL THEN 0 ELSE unit_price END,
 		pageviews,
 		timeonsite,
 		bounces,
 		revenue,
-		unit_price / 1000000 AS unitprice
+		ROUND(unit_price/1000000,2) AS unitprice
 FROM analytics
 ```
 
