@@ -1,17 +1,19 @@
 What issues will you address by cleaning the data?
-## The unit cost in the data needs to be divided by 1,000,000.
+
+# 1. Cleaning the 'analytics' table
+
+## The 'unit_cost' in the data needs to be divided by 1,000,000.
 By examining the unit cost of the products in this dataset, they are very unsually high for the types of products being sold. 
 
 To investigate further I checked the 'total_transaction_revenue' column in the 'all_sessions' table. An example of what I found. Nest® Cam Outdoor Security Camera - USA Where the 'product_price' was 119000000. This seems a little bit high for a security camera so I googled the actual price: 179.72 United States Dollar. This is when I realized that there were extra zeros in the entry. 
 
 Dividing by 1,000,000 would make it $119 USD which makes alot more sense for this kind of product. We will be diving all values with these extra 0's to remove the extra six extra 0's added in error.
 
-## The column 'userid' in the analytics table is redundant?
-The value of user_id is null for every row and it is also not used in any other table as a primary key or a foreign key. 'fullvisitorID' is unique to every visitor so we don't really need this column at all. We can use 'fullvisitorID' to represent each visitor instead of userID since it is unique to each vist. Was this column implemented for future proofing?
-
 ## Missing Values in units_sold column
 For the units_sold column in the analytics table there are columns where units_sold is NULL. It is unclear whether this is meant to represent 0 or that the data is missing. By checking other columns in the same 'analytics' table, for example 'unit_price' there are infact rows with the value of 0 to represent zero sales instead of NULL. Also by checking whether or not there any rows in the 'units_sold' table have a value zero, we can see that none exist. Therefore moving forward we are going to go with the assumption that these NULL values do infact represent 0 'units_sold'.
 
+## The column 'userid' in the analytics table is redundant?
+The value of user_id is null for every row and it is also not used in any other table as a primary key or a foreign key. 'fullvisitorID' is unique to every visitor so we don't really need this column at all. We can use 'fullvisitorID' to represent each visitor instead of userID since it is unique to each vist. Was this column implemented for future proofing?
 
 # Queries:
 Below, provide the SQL queries you used to clean your data.
