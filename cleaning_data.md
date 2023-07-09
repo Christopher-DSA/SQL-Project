@@ -24,7 +24,7 @@ By selecting just distinct rows, the number of rows is less than the number of r
 Therfore before using this data to answer questions, we will remoce the duplicate rows.
 
 ## 4. The column 'userid' in the analytics table is redundant?
-The value of user_id is null for every row and it is also not used in any other table as a primary key or a foreign key. 'fullvisitorID' is unique to every visitor so we don't really need this column at all. We can use 'fullvisitorID' to represent each visitor instead of userID since it is unique to each vist. Was this column implemented for future proofing?
+The value of user_id is null for every row and it is also not used in any other table as a primary key or a foreign key. 'fullvisitorID' is unique to every visitor so we don't really need this column at all. We can use 'fullvisitorID' to represent each visitor instead of userID since it is unique to each vistitor regardless of whether or not the leave the website and come back later or not. Was this column implemented for future proofing?
 
 # Queries:
 Below, provide the SQL queries you used to clean your data.
