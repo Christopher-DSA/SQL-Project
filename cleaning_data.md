@@ -115,4 +115,5 @@ SELECT DISTINCT
 		ROUND(unit_price/1000000,2) AS unitprice
 FROM analytics
 ```
+### Our 'analytics' table has now been cleaned
 
