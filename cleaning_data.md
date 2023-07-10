@@ -125,24 +125,4 @@ First, let's take a look at the data.
 ``` sql
 SELECT * FROM all_sessions
 ```
-We have two very similarly named columns in our table, ```total_transaction_revenue``` and  ```transaction_revenue```. Let's see if these columns contain the same data as eachother.
-
-```sql
-SELECT * FROM all_sessions WHERE total_transaction_revenue <> transaction_revenue 
-```
-Returns: 0 rows.
-
-### Let's check to see if the two columns contain the same number of rows.
-```sql
-SELECT total_transaction_revenue FROM all_sessions
-```
-Returns: 15134 rows
-```sql
-SELECT transaction_revenue FROM all_sessions
-```
-Returns: 15134 rows
-
-Therefore, since the comparison query returned 0 rows and the total number of rows in both columns is the same, every row in the total_transaction_revenue column is identical to every row in the transaction_revenue column.
-
-Action: The total_transaction_revenue column will be dropped.
 
