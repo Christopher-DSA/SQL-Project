@@ -120,3 +120,9 @@ FROM new_analytics_type
 
 # NEXT: Cleaning the all_sessions_table
 
+First, let's take a look at the data.
+
+``` sql
+SELECT * FROM all_sessions
+```
+
