@@ -118,3 +118,5 @@ FROM new_analytics_type
 ```
 ### Our 'analytics' table has now been cleaned
 
+# NEXT: Cleaning the all_sessions_table
+
