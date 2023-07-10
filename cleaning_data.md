@@ -126,7 +126,7 @@ First, let's take a look at the data.
 SELECT * FROM all_sessions
 ```
 
-### In the total_transaction_revenue, transaction_revenue, product_price, product revenue
+### In the total_transaction_revenue, transaction_revenue, product_price, product_revenue, and item_revenue all have 6 extra 0's added to their actual value. Let's fix that.
 
 ``` sql
 SELECT 
@@ -134,4 +134,27 @@ CASE WHEN total_transaction_revenue IS NOT NULL THEN ROUND(total_transaction_rev
 ELSE 0 END AS total_transaction_revenue 
 FROM all_sessions_backup
 ```
-
+``` sql
+SELECT 
+CASE WHEN transaction_revenue IS NOT NULL THEN ROUND(transaction_revenue/1000000,2) 
+ELSE 0 END AS transaction_revenue 
+FROM all_sessions_backup
+```
+``` sql
+SELECT 
+CASE WHEN product_price IS NOT NULL THEN ROUND(product_price/1000000,2) 
+ELSE 0 END AS product_price 
+FROM all_sessions_backup
+```
+``` sql
+SELECT 
+CASE WHEN product_revenue IS NOT NULL THEN ROUND(product_revenue/1000000,2) 
+ELSE 0 END AS product_revenue 
+FROM all_sessions_backup
+```
+``` sql
+SELECT 
+CASE WHEN item_revenue IS NOT NULL THEN ROUND(item_revenue/1000000,2) 
+ELSE 0 END AS item_revenue 
+FROM all_sessions_backup
+```
