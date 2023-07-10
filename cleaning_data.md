@@ -126,3 +126,12 @@ First, let's take a look at the data.
 SELECT * FROM all_sessions
 ```
 
+### In the total_transaction_revenue, transaction_revenue, product_price, product revenue
+
+``` sql
+SELECT 
+CASE WHEN total_transaction_revenue IS NOT NULL THEN ROUND(total_transaction_revenue/1000000,2) 
+ELSE 0 END AS total_transaction_revenue 
+FROM all_sessions_backup
+```
+
