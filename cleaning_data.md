@@ -97,23 +97,24 @@ SELECT to_timestamp(visit_start_time::int)::text AS "vist_start_time" FROM analy
 
 # 6. Combine all the above conditions in order to get a clean table ready for analysis:
 ``` sql
-SELECT DISTINCT
-		visitnumber,
+CREATE TABLE analytics_cleaned AS 
+  SELECT DISTINCT
+		visit_number,
 		visit_id,
 		visit_start_time, 
-		to_timestamp(visit_start_time::int)::timestamptz AS "vist_start_time2",
-		"date",
+		to_timestamp(visit_start_time::int)::timestamptz AS "full_time_stamp",
+		visit_date,
 		full_visitor_id,
 		userid,
 		channel_grouping,
-		social_engagement_type,
-		CASE WHEN units_sold IS NULL THEN 0 ELSE unit_price END,
+		social_enagement_type AS social_engagement_type,
+		CASE WHEN units_sold::int IS NULL THEN 0 ELSE units_sold END AS units_sold,
 		pageviews,
 		timeonsite,
 		bounces,
 		revenue,
-		ROUND(unit_price/1000000,2) AS unitprice
-FROM analytics
+		ROUND(unit_price/1000000,2) AS unit_price
+FROM new_analytics_type
 ```
 ### Our 'analytics' table has now been cleaned
 
