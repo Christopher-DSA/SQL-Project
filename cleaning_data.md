@@ -98,7 +98,7 @@ SELECT to_timestamp(visit_start_time::int)::text AS "vist_start_time" FROM analy
 # 6. Combine all the above conditions in order to get a clean table ready for analysis:
 ``` sql
 CREATE TABLE analytics_cleaned AS 
-  SELECT DISTINCT
+SELECT DISTINCT
 		visit_number,
 		visit_id,
 		visit_start_time, 
