@@ -126,6 +126,7 @@ First, let's take a look at the data.
 SELECT * FROM all_sessions
 ```
 
+``` sql
 CREATE TABLE analytics_cleaned AS 
   SELECT DISTINCT
 		visit_number,
@@ -144,4 +145,4 @@ CREATE TABLE analytics_cleaned AS
 		revenue,
 		ROUND(unit_price/1000000,2) AS unit_price
 FROM analytics
-
+```
