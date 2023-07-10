@@ -125,4 +125,14 @@ First, let's take a look at the data.
 ``` sql
 SELECT * FROM all_sessions
 ```
+We have two very similarly named columns in our table, ```total_transaction_revenue``` and  ```transaction_revenue```. Let's see if these columns contain the same data as eachother.
+
+```sql
+SELECT * FROM all_sessions WHERE total_transaction_revenue <> transaction_revenue 
+```
+Returns: 0 rows.
+
+Since the query returned 0 rows, every row in the total_transaction_revenue column is identical to every row in the transaction_revenue column.
+
+Action: The total_transaction_revenue column will be dropped.
 
