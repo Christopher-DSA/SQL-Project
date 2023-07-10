@@ -132,7 +132,17 @@ SELECT * FROM all_sessions WHERE total_transaction_revenue <> transaction_revenu
 ```
 Returns: 0 rows.
 
-Since the query returned 0 rows, every row in the total_transaction_revenue column is identical to every row in the transaction_revenue column.
+### Let's check to see if the two columns contain the same number of rows.
+```sql
+SELECT total_transaction_revenue FROM all_sessions
+```
+Returns: 15134 rows
+```sql
+SELECT transaction_revenue FROM all_sessions
+```
+Returns: 15134 rows
+
+Therefore, since the comparison query returned 0 rows and the total number of rows in both columns is the same, every row in the total_transaction_revenue column is identical to every row in the transaction_revenue column.
 
 Action: The total_transaction_revenue column will be dropped.
 
