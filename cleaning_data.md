@@ -158,3 +158,17 @@ CASE WHEN item_revenue IS NOT NULL THEN ROUND(item_revenue/1000000,2)
 ELSE 0 END AS item_revenue 
 FROM all_sessions_backup
 ```
+
+### Removing leading spaces
+Looking at the values for the product_vartiant column there are alot of '(not set)'.
+To make it more clear what other possible values this column contains, we will filter out what we don't want to see.
+
+``` sql
+SELECT * FROM all_sessions_backup WHERE product_variant != '(not set)'
+```
+Observation: Many of the values contain leading spaces, let's fix that.
+
+``` sql
+
+```
+
