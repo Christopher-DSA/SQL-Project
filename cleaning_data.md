@@ -168,7 +168,8 @@ SELECT * FROM all_sessions_backup WHERE product_variant != '(not set)'
 ```
 Observation: Many of the values contain leading spaces, let's fix that.
 
+We can use the below query to remove the leading spaces fomr our problem rows.
 ``` sql
-
+SELECT LTRIM(product_variant) FROM all_sessions_backup WHERE product_variant != '(not set)'
 ```
 
