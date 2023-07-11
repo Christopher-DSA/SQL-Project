@@ -179,28 +179,34 @@ CREATE TABLE cleaned_all_sessions AS
   SELECT
 	full_visitor_id,
 	channel_grouping,
-	time,
+	"time",
 	country,
 	city,
-	total_transaction_revenue, *
+	CASE WHEN total_transaction_revenue IS NOT NULL THEN ROUND(total_transaction_revenue/1000000,2) 
+	ELSE 0 END AS total_transaction_revenue, 
 	transactions,
 	time_on_site,
 	page_views,
 	"date",
 	visit_id,
 	"type",
-	product_refund_amount, *
+	CASE WHEN product_refund_amount IS NOT NULL THEN ROUND(product_price/1000000,2)
+	ELSE NULL END AS product_refund_amount, --In this case we want to leave our NULL values in because a value of NULL signifies no refund was given.
 	product_quantity, 
-	product_price, *
-	product_revenue, *
+	CASE WHEN product_price IS NOT NULL THEN ROUND(product_price/1000000,2) 
+	ELSE 0 END AS product_price,
+	CASE WHEN product_revenue IS NOT NULL THEN ROUND(product_revenue/1000000,2) 
+	ELSE 0 END AS product_revenue, 
 	product_sku,
 	v2product_name,
 	v2product_category,
 	product_variant, --remove leading spaces
 	currency_code,
 	item_quantity,
-	item_revenue, *
-	transaction_revenue, *
+	CASE WHEN item_revenue IS NOT NULL THEN ROUND(item_revenue/1000000,2) 
+	ELSE 0 END AS item_revenue, 
+	CASE WHEN transaction_revenue IS NOT NULL THEN ROUND(transaction_revenue/1000000,2) 
+	ELSE 0 END AS transaction_revenue,
 	transaction_id,
 	page_title,
 	search_keyword,
@@ -208,7 +214,7 @@ CREATE TABLE cleaned_all_sessions AS
 	e_commerce_action_type,
 	e_commerce_action_step,
 	e_commeerce_action_option
-FROM analytics
+FROM all_sessions_backup
 ```
 ### It looks like the entire item_quantity column is empty, Should we drop the column?
 ```sql
