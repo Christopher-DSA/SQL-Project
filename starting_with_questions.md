@@ -22,7 +22,7 @@ The cities with the highest level of transaction revenues on the site are the Un
 SQL Queries:
 
 ```sql
-
+SELECT AVG(product_quantity), country, city FROM cleaned_all_sessions WHERE product_quantity IS NOT NULL GROUP BY country, city ORDER BY AVG(product_quantity) DESC, country, city 
  ```
 
 Answer:
