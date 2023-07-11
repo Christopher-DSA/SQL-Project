@@ -6,7 +6,9 @@ Answer the following questions and provide the SQL queries used to find the answ
 
 SQL Queries:
 
-
+```sql
+SELECT SUM(transaction_revenue), country, city FROM cleaned_all_sessions GROUP BY country, city ORDER BY SUM(transaction_revenue) DESC, country, city 
+ ```
 
 Answer:
 
