@@ -26,6 +26,9 @@ SELECT AVG(product_quantity), country, city FROM cleaned_all_sessions WHERE prod
  ```
 
 Answer:
+The average number of products ordered from visitors in each city and country.
+
+![image](https://github.com/Christopher-DSA/SQL-Project/assets/132075292/e19a0bed-e2dc-461e-83be-f288a09d5e76)
 
 
 
