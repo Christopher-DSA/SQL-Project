@@ -173,7 +173,7 @@ We can use the below query to remove the leading spaces fomr our problem rows.
 SELECT LTRIM(product_variant) FROM all_sessions_backup WHERE product_variant != '(not set)'
 ```
 
-### We can now put everything together to create a cleaned table.
+### We can now put everything together to create a cleaned "all_sessions" table.
 ``` sql
 CREATE TABLE cleaned_all_sessions AS 
   SELECT
