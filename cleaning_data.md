@@ -213,7 +213,7 @@ CREATE TABLE cleaned_all_sessions AS
 	page_path_level_1,
 	e_commerce_action_type,
 	e_commerce_action_step,
-	e_commeerce_action_option
+	e_commerce_action_option
 FROM all_sessions_backup
 ```
 ### It looks like the entire item_quantity column is empty, Should we drop the column?
