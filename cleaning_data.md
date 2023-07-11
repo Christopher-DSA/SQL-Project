@@ -173,3 +173,41 @@ We can use the below query to remove the leading spaces fomr our problem rows.
 SELECT LTRIM(product_variant) FROM all_sessions_backup WHERE product_variant != '(not set)'
 ```
 
+### We can now put everything together to create a cleaned table.
+``` sql
+CREATE TABLE cleaned_all_sessions AS 
+  SELECT
+	full_visitor_id,
+	channel_grouping,
+	time,
+	country,
+	city,
+	total_transaction_revenue, *
+	transactions,
+	time_on_site,
+	page_views,
+	"date",
+	visit_id,
+	"type",
+	product_refund_amount, *
+	product_quantity, 
+	product_price, *
+	product_revenue, *
+	product_sku,
+	v2product_name,
+	v2product_category,
+	product_variant, --remove leading spaces
+	currency_code,
+	item_quantity,
+	item_revenue, *
+	transaction_revenue, *
+	transaction_id,
+	page_title,
+	search_keyword,
+	page_path_level_1,
+	e_commerce_action_type,
+	e_commerce_action_step,
+	e_commeerce_action_option
+FROM analytics
+```
+
