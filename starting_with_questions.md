@@ -44,6 +44,19 @@ SELECT COUNT(v2product_category), v2product_category, country, city FROM cleaned
 ```
 
 Answer:
+Yes, there are patterns in the types (product categories) of products ordered from visitors in each city and country:
+
+### Top 3 product categorys by country:
+
+### United States
+![image](https://github.com/Christopher-DSA/SQL-Project/assets/132075292/e80a14b8-5409-446c-88a4-52b8cd48c23c)
+
+### Germany
+![image](https://github.com/Christopher-DSA/SQL-Project/assets/132075292/cded9821-54eb-45f9-b880-38f5090d8ecb)
+
+### Canada
+![image](https://github.com/Christopher-DSA/SQL-Project/assets/132075292/d302c057-5f99-4342-a817-90f2d5f102df)
+
 
 
 
