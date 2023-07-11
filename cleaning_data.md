@@ -210,4 +210,7 @@ CREATE TABLE cleaned_all_sessions AS
 	e_commeerce_action_option
 FROM analytics
 ```
-
+### It looks like the entire item_quantity column is empty, Should we drop the column?
+```sql
+SELECT * FROM all_sessions_backup WHERE item_quantity IS NOT NULL
+```
