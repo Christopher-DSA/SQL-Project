@@ -39,7 +39,9 @@ The average number of products ordered from visitors in each city and country.
 
 SQL Queries:
 
-
+```sql
+SELECT COUNT(v2product_category), v2product_category, country, city FROM cleaned_all_sessions WHERE v2product_category IS NOT NULL GROUP BY country, city, v2product_category ORDER BY COUNT(v2product_category) DESC, country, city 
+```
 
 Answer:
 
