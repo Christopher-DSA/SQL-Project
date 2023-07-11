@@ -12,15 +12,18 @@ SELECT SUM(transaction_revenue), country, city FROM cleaned_all_sessions GROUP B
 
 Answer:
 
+The cities with the highest level of transaction revenues on the site are the United States and the two cities of Sunnyval and (Not available in demo dataset).
 
-
+![image](https://github.com/Christopher-DSA/SQL-Project/assets/132075292/20f9ddd2-83ec-4235-ad10-c1fefc3c1c4a)
 
 **Question 2: What is the average number of products ordered from visitors in each city and country?**
 
 
 SQL Queries:
 
+```sql
 
+ ```
 
 Answer:
 
