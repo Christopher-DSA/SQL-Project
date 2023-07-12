@@ -39,13 +39,7 @@ ORDER BY AVG(product_quantity) DESC, country, city
 
 
 Answer:
-The average number of products ordered from visitors in each city and country.
-
-![image](https://github.com/Christopher-DSA/SQL-Project/assets/132075292/e19a0bed-e2dc-461e-83be-f288a09d5e76)
-
-
-
-
+The average number of products ordered from visitors in each city and country pictured above.
 
 **Question 3: Is there any pattern in the types (product categories) of products ordered from visitors in each city and country?**
 
