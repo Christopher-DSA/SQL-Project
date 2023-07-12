@@ -29,6 +29,8 @@ ORDER BY visitor_count DESC
 LIMIT 3;
 ```
 Answer:
+![image](https://github.com/Christopher-DSA/SQL-Project/assets/132075292/c63b9a0d-3519-413a-a672-5a9b9a33ef90)
+
 
 The countries with most uniques visitors are the United States with 8118 visitors, India with 693 visitors and Unitied Kingdom with 641 vistors.
 This confirms that the website is most popular with customers from the united states.
