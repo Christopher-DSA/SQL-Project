@@ -21,6 +21,10 @@ Finally I did QA on my data and identified risk areas by running queries to vali
 
 ## Challenges 
 (discuss challenges you faced in the project)
-Learning to understand the buisness process soley through the data I received in the CSV files was an interesting experience. This was helpful learning experience.
+Learning to understand the buisness process of the website through the data I received in the CSV files was an interesting experience.
+
+Data type divison was an unexpected challenge in this project. I created a query to calculate the percentage of customers who visited website and also made a purchase but I would always get the result of 0. The issues was that the data I was dividing was the big int data type. After casting to the numeric type I got the expected result.
 ## Future Goals
 (what would you do if you had more time?)
+If I  had more time, even though I spent 4 hours cleaning the data I would spend a little bit more time double checking everything to make sure I removed all the dirty data.
+Another thing I would have done if I had more time is implementing more QA when running me queries. I did QA some of my queries but I didin't get the chance to practice QA on all of them.
