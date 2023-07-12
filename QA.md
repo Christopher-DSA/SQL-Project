@@ -1,5 +1,6 @@
 What are your risk areas? Identify and describe them.
-Some risk areas with this data are making sure the logic is correct when answering questions about the data. For example let's say we wanted to get the number of distinct visitors on the website. We might think to do this:
+
+### One of the risk areas with this data are making sure the logic is correct when answering questions about the data. For example let's say we wanted to get the number of distinct visitors on the website. We might think to do this:
 
 ```sql
 SELECT COUNT(full_visitor_id) AS total_unique_visitors
