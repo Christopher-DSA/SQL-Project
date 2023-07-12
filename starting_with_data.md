@@ -49,4 +49,4 @@ FROM cleaned_all_sessions
 SELECT count_with_revenue/total_distinct_visitors::numeric, count_zero_revenue/total_distinct_visitors::numeric
 FROM count_of_sales
 ```
-Answer: 99.48 of customers do not make a purchase when they visit the website. That is crazy.
+Answer: 99.48 of customers do not make a purchase when they visit the website. Perhaps the website could use some more design changes to increase sales.
