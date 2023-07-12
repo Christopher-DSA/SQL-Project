@@ -1,8 +1,18 @@
 What are your risk areas? Identify and describe them.
 Some risk areas with this data are making sure the logic is correct when answering questions about the data. For example let's say we wanted to get the number of distinct visitors on the website. We might think to do this:
 
+```sql
+SELECT COUNT(full_visitor_id) AS total_unique_visitors
+FROM cleaned_all_sessions;
+```
 
+However doing this doesn't each full_visitor_is is actually unique meaning that we could double count visitors.
+Instead we should do this:
 
+```sql
+SELECT COUNT(DISTINCT full_visitor_id) AS total_unique_visitors
+FROM cleaned_all_sessions;
+```
 
 QA Process:
 Describe your QA process and include the SQL queries used to execute it.
