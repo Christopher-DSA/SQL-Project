@@ -2,7 +2,7 @@ Consider the data you have available to you. You can use the data to: - find all
 
 In the starting_with_data.md file, write 3 - 5 new questions that you could answer with this database. For each question, include The queries you used to answer the question The answer to the question
 
-Question 1:  What are the toal number of unique vistors to the website?
+# Question 1:  What are the toal number of unique vistors to the website?
 
 SQL Queries: 
 
@@ -17,7 +17,7 @@ Answer:
  The website had 14223 unique visitors.
 
 
-Question 2: Which countries contained the most amount of unique vistors, what are the top 3?
+# Question 2: Which countries contained the most amount of unique vistors, what are the top 3?
 
 SQL Queries:
 
@@ -35,7 +35,7 @@ Answer:
 The countries with most uniques visitors are the United States with 8118 visitors, India with 693 visitors and Unitied Kingdom with 641 vistors.
 This confirms that the website is most popular with customers from the united states.
 
-Question 3:  Compute the percentage of visitors to the site that actually makes a purchase.
+# Question 3:  Compute the percentage of visitors to the site that actually makes a purchase.
 
 SQL Queries:
 
