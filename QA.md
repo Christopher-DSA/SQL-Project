@@ -31,21 +31,40 @@ SELECT LTRIM(product_variant) FROM all_sessions_backup WHERE product_variant != 
 ```
 ### A third risk area is using incorrect data types.
 
+``` sql
 --This query calculate the percentage of visitors who made a purchase on the website.
-
---Running this query will return 0.
 
 WITH count_of_sales AS (
 SELECT
   COUNT(DISTINCT CASE WHEN total_transaction_revenue > 0 THEN full_visitor_id END) AS count_with_revenue,
   COUNT(DISTINCT CASE WHEN total_transaction_revenue = 0 THEN full_visitor_id END) AS count_zero_revenue,
-  COUNT(DISTINCT full_visitor_id) AS total_distinct_visitors
+  COUNT(DISTINCT full_visitor_id) AS total_distinct_visitors,
+  (COUNT(DISTINCT CASE WHEN total_transaction_revenue > 0 THEN full_visitor_id END) * 100.0 / COUNT(DISTINCT full_visitor_id)) AS percentage_with_revenue,
+  (COUNT(DISTINCT CASE WHEN total_transaction_revenue = 0 THEN full_visitor_id END) * 100.0 / COUNT(DISTINCT full_visitor_id)) AS percentage_zero_revenue
 FROM cleaned_all_sessions
 )
-SELECT * FROM count_of_sales
 
--- Step 3: Subquery Validation
--- Execute the subquery separately and verify the results against a sample dataset or known values.
+SELECT (count_with_revenue/total_distinct_visitors), (count_zero_revenue/total_distinct_visitors)
+FROM count_of_sales
+```
+This seems solid, however no matter the number of count_with_revenue and count_zero_revenue you always get 0 for both columns.
+Why would this happen? Because when you division with two integer types of data you will get an integer as a result unless you specify a data type that can include decimal values. And since any number divided by a number larger than itself will result in a decimal value which that gets rounded by post gres down to zero, this query will not work the way you think it would.
 
-SELECT *
-FROM count_of_sales;
+In order to fix this we can specify the data type we want the result of our division to be in our SELECT statement.
+
+``` sql
+WITH count_of_sales AS (
+SELECT
+  COUNT(DISTINCT CASE WHEN total_transaction_revenue > 0 THEN full_visitor_id END) AS count_with_revenue,
+  COUNT(DISTINCT CASE WHEN total_transaction_revenue = 0 THEN full_visitor_id END) AS count_zero_revenue,
+  COUNT(DISTINCT full_visitor_id) AS total_distinct_visitors,
+  (COUNT(DISTINCT CASE WHEN total_transaction_revenue > 0 THEN full_visitor_id END) * 100.0 / COUNT(DISTINCT full_visitor_id)) AS percentage_with_revenue,
+  (COUNT(DISTINCT CASE WHEN total_transaction_revenue = 0 THEN full_visitor_id END) * 100.0 / COUNT(DISTINCT full_visitor_id)) AS percentage_zero_revenue
+FROM cleaned_all_sessions
+)
+
+SELECT count_with_revenue/total_distinct_visitors::numeric, count_zero_revenue/total_distinct_visitors::numeric
+FROM count_of_sales
+```
+
+Now that we have cast to the numeric data type we will get the expected result.
