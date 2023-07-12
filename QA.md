@@ -1,3 +1,6 @@
+QA Process:
+Describe your QA process and include the SQL queries used to execute it.
+
 What are your risk areas? Identify and describe them.
 
 ### One of the risk areas with this data are making sure the logic is correct when answering questions about the data. For example let's say we wanted to get the number of distinct visitors on the website. We might think to do this:
@@ -26,16 +29,11 @@ We can the LTRIM() function in this query.
 ``` sql
 SELECT LTRIM(product_variant) FROM all_sessions_backup WHERE product_variant != '(not set)'
 ```
-
-
-QA Process:
-Describe your QA process and include the SQL queries used to execute it.
-
-For example, when I was solving the question: compute the percentage, I used this QA process.
+### A third risk area is using incorrect data types.
 
 --This query calculate the percentage of visitors who made a purchase on the website.
 
---QA: Does the logic used to calculate these percentages make sense?
+--Running this query will return 0.
 
 WITH count_of_sales AS (
 SELECT
