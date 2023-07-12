@@ -31,7 +31,7 @@ SQL Queries:
 --This query returns the average quantity each city/country combination orders in descending order
 SELECT AVG(product_quantity), country, city
 FROM cleaned_all_sessions
-WHERE product_quantity IS NOT NULL AND city != 'not available in demo dataset'
+WHERE product_quantity IS NOT NULL AND city != 'not available in demo dataset' AND city != '(not set)'
 GROUP BY country, city
 ORDER BY AVG(product_quantity) DESC, country, city 
  ```
