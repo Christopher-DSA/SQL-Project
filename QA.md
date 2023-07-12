@@ -15,7 +15,14 @@ FROM cleaned_all_sessions;
 ```
 To summarize: This first risk area is duplicate data.
 
-A second risk area is incorrectly formatted data, for example.
+### A second risk area is incorrectly formatted data, for example. The product_variant columns data looked something like this, '    product_variant_name'.
+The data contained leading spaces.
+
+We can the LTRIM() function in this query.
+
+``` sql
+SELECT LTRIM(product_variant) FROM all_sessions_backup WHERE product_variant != '(not set)'
+```
 
 
 QA Process:
