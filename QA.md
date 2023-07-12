@@ -13,6 +13,10 @@ Instead we should do this:
 SELECT COUNT(DISTINCT full_visitor_id) AS total_unique_visitors
 FROM cleaned_all_sessions;
 ```
+To summarize: This first risk area is duplicate data.
+
+A second risk area is incorrectly formatted data, for example.
+
 
 QA Process:
 Describe your QA process and include the SQL queries used to execute it.
