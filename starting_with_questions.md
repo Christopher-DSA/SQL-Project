@@ -29,12 +29,14 @@ SQL Queries:
 
 ```sql
 --This query returns the average quantity each city/country combination orders in descending order
-SELECT AVG(product_quantity), country, city
+SELECT AVG(product_quantity) AS average_product_quantity_ordered, country, city
 FROM cleaned_all_sessions
 WHERE product_quantity IS NOT NULL AND city != 'not available in demo dataset' AND city != '(not set)'
 GROUP BY country, city
 ORDER BY AVG(product_quantity) DESC, country, city 
  ```
+![image](https://github.com/Christopher-DSA/SQL-Project/assets/132075292/15977c43-0cd9-44c0-9d1b-86f300be640f)
+
 
 Answer:
 The average number of products ordered from visitors in each city and country.
