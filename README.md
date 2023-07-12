@@ -7,7 +7,7 @@ My goal with this final project is to put all my SQL skills to the test and cont
 
 ## Process
 ### (Step 1)
-First I loaded all the csv files into a new data base called ecommerece.
+First I loaded all the csv files into a newdata base called ecommerce using pgadmin4.
 ### (Step 2)
 Then I reviewed the data and skimmed through to see what kind of information was within each column. I also spent time looking for any dirty data.
 ### (Step 3)
