@@ -2,6 +2,7 @@
 
 ## Project/Goals
 (fill in your description and goals here)
+
 My goal with this final project is to put all my SQL skills to the test and continue to learn more during the project.
 
 ## Process
