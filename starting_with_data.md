@@ -6,7 +6,7 @@ Question 1:  What are the toal number of unique vistors to the website?
 
 SQL Queries: 
 
-```
+``` sql
 SELECT COUNT(DISTINCT full_visitor_id) AS total_unique_visitors
 FROM cleaned_all_sessions;
 ```
@@ -19,7 +19,7 @@ Question 2: Which countries contained the most amount of unique vistors, what ar
 
 SQL Queries:
 
-```
+``` sql
 SELECT country, COUNT(DISTINCT full_visitor_id) AS visitor_count
 FROM cleaned_all_sessions
 GROUP BY country
