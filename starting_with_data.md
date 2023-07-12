@@ -10,6 +10,8 @@ SQL Queries:
 SELECT COUNT(DISTINCT full_visitor_id) AS total_unique_visitors
 FROM cleaned_all_sessions;
 ```
+![image](https://github.com/Christopher-DSA/SQL-Project/assets/132075292/b23bd889-f17b-46d5-adc8-c9205cda0c4c)
+
 
 Answer: 
  The website had 14223 unique visitors.
